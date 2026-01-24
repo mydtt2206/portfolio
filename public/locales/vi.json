@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "skills": "Kỹ năng",
+    "projects": "Dự án",
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "title": "Quản lý vận tải và kinh doanh",
+    "description": "Là sinh viên năm cuối chuyên ngành Quản lý vận tải và kinh doanh, em có tư duy chú trọng đến chi tiết, cẩn thận trong quá trình học tập và làm việc. Em có sự quan tâm lớn đến hoạt động vận tải, tối ưu hóa quy trình và nâng cao hiệu quả vận hành trong lĩnh vực logistics.",
+    "viewProjects": "Xem dự án",
+    "downloadCV": "Tải CV",
+    "imageAlt": "Chuyên gia Logistics",
+    "name": "Đặng Thị Trà My"
+  },
+  "skills": {
+    "title": "Kỹ năng chuyên môn",
+    "warehouse": "Quản lý kho vận",
+    "supplyChain": "Tối ưu chuỗi cung ứng",
+    "transport": "Vận tải đa phương thức",
+    "wms": "Hệ thống WMS/TMS",
+    "analysis": "Phân tích logistics",
+    "risk": "Quản lý rủi ro",
+    "tag1": "Supply Chain",
+    "tag2": "Warehouse Management",
+    "tag3": "Transportation",
+    "tag4": "Customs"
+  },
+  "projects": {
+    "title": "Dự án tiêu biểu",
+    "technologies": "Công nghệ sử dụng",
+    "results": "Kết quả đạt được"
+  },
+  "footer": {
+    "subtitle": "Chuyên gia tư vấn và phát triển giải pháp logistics",
+    "contact": "Liên hệ"
+  }
+}
