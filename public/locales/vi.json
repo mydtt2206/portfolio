@@ -14,16 +14,16 @@
   },
   "skills": {
     "title": "Kỹ năng chuyên môn",
-    "warehouse": "Quản lý kho vận",
-    "supplyChain": "Tối ưu chuỗi cung ứng",
+    "warehouse": "Lập kế hoạch kho & đặt hàng",
+    "supplyChain": "Quản lý chuỗi cung ứng",
     "transport": "Vận tải đa phương thức",
-    "wms": "Hệ thống WMS/TMS",
+    "wms": "Quản lý vận hành(WMS)",
     "analysis": "Phân tích logistics",
     "risk": "Quản lý rủi ro",
-    "tag1": "Supply Chain",
-    "tag2": "Warehouse Management",
-    "tag3": "Transportation",
-    "tag4": "Customs"
+    "tag1": "Thương mại điện tử",
+    "tag2": "Hệ thống vận chuyển / hệ thống giao nhận",
+    "tag3": "Phân tích kinh doanh",
+    "tag4": "Giải quyết vấn đề"
   },
   "projects": {
     "title": "Dự án tiêu biểu",
