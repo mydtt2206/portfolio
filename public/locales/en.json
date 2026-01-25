@@ -14,16 +14,16 @@
   },
   "skills": {
     "title": "Professional Skills",
-    "warehouse": "Warehouse Management",
-    "supplyChain": "Supply Chain Optimization",
+    "warehouse": "Planning & Supply Ordering",
+    "supplyChain": "Supply Chain Management",
     "transport": "Multimodal Transportation",
-    "wms": "WMS/TMS Systems",
+    "wms": "Operations Management",
     "analysis": "Logistics Analysis",
     "risk": "Risk Management",
-    "tag1": "Supply Chain",
-    "tag2": "Warehouse Management",
-    "tag3": "Transportation",
-    "tag4": "Customs"
+    "tag1": "E-Commerce",
+    "tag2": "Shipping Systems",
+    "tag3": "Business Analysis",
+    "tag4": "Problem Solving"
   },
   "projects": {
     "title": "Featured Projects",
