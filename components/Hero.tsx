@@ -11,9 +11,17 @@ export default function Hero() {
   const imageRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
 
-  const [isInView, setIsInView] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+    setIsDesktop(window.innerWidth >= 768)
+  }, [])
+
+  useEffect(() => {
+    if (!mounted || !isDesktop) return
+
     const handleScroll = () => {
       if (!sectionRef.current || !imageRef.current || !textRef.current) return
 
@@ -46,19 +54,7 @@ export default function Hero() {
     handleScroll()
 
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  useEffect(() => {
-    if (!sectionRef.current) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsInView(entry.isIntersecting),
-      { threshold: 0.3 }
-    )
-
-    observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
+  }, [mounted, isDesktop])
 
   const scrollToProjects = () => {
     document
@@ -66,30 +62,37 @@ export default function Hero() {
       ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
+  if (!mounted) return null
+
   return (
     <section
       ref={sectionRef}
-      className="min-h-[90vh] py-20 px-6 flex items-center transition-all"
+      className="bg-slate-50 px-4 py-20 md:min-h-[90vh] md:flex md:items-center"
     >
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-12">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col-reverse md:flex-row items-center gap-12">
 
-          <div ref={textRef} className="md:w-1/2">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <div
+            ref={textRef}
+            className="w-full md:w-1/2 text-center md:text-left"
+          >
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight">
               {t('hero.title')}
             </h1>
 
-            <p className="text-lg text-slate-600 mb-8">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 mb-8">
               {t('hero.description')}
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 sm:justify-center md:justify-start">
               <button
                 onClick={scrollToProjects}
                 className="
-                  bg-blue-600 text-white px-6 py-3 rounded-lg
-                  transition-all duration-300
-                  hover:bg-blue-700 hover:scale-105 hover:shadow-lg
+                  w-full sm:w-auto
+                  bg-blue-600 text-white
+                  px-6 py-3 rounded-lg
+                  transition-colors duration-300
+                  hover:bg-blue-700
                 "
               >
                 {t('hero.viewProjects')}
@@ -97,9 +100,11 @@ export default function Hero() {
 
               <button
                 className="
-                  border border-blue-600 text-blue-600 px-6 py-3 rounded-lg
-                  transition-all duration-300
-                  hover:bg-blue-50 hover:scale-105
+                  w-full sm:w-auto
+                  border border-blue-600 text-blue-600
+                  px-6 py-3 rounded-lg
+                  transition-colors duration-300
+                  hover:bg-blue-50
                 "
               >
                 {t('hero.downloadCV')}
@@ -107,32 +112,30 @@ export default function Hero() {
             </div>
           </div>
 
-          <div ref={imageRef} className="md:w-1/2">
-            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+          <div
+            ref={imageRef}
+            className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0"
+          >
+            <div className="relative w-60 h-60 sm:w-64 sm:h-64 md:w-80 md:h-80">
+
               <Image
                 src="/avatar.jpg"
                 alt={t('hero.imageAlt')}
                 fill
-                className="
-                  rounded-full object-cover
-                  border-4 border-white
-                  shadow-2xl
-                  transition-transform duration-500
-                  hover:scale-105
-                "
+                priority
+                className="rounded-full object-cover border-4 border-white shadow-xl"
               />
 
-              {isInView && (
-                <>
-                  <div className="absolute inset-0 rounded-full border-2 border-blue-300/30 animate-ping" />
-                  <div className="absolute inset-4 rounded-full border-2 border-blue-400/20 animate-pulse" />
-                </>
-              )}
+              <div className="absolute inset-0 rounded-full border-2 border-blue-300/30 animate-ping" />
+              <div className="absolute inset-4 rounded-full border-2 border-blue-400/20 animate-pulse" />
 
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-400/20 rounded-full animate-bounce hidden md:block" />
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-cyan-400/20 rounded-full animate-bounce delay-75 hidden md:block" />
+              <div className="absolute -top-5 -right-5 w-8 h-8 bg-blue-400/20 rounded-full animate-bounce" />
+              <div className="absolute -bottom-5 -left-5 w-6 h-6 bg-cyan-400/20 rounded-full animate-bounce delay-75" />
+
             </div>
           </div>
+
+
 
         </div>
       </div>
