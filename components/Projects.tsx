@@ -15,19 +15,13 @@ export default function Projects() {
   useEffect(() => {
     setMounted(true)
   }, [])
+
   useEffect(() => {
     if (!mounted || !sectionRef.current) return
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsActive(true)
-        }
-      },
-      {
-        threshold: 0,
-        rootMargin: '0px 0px -20% 0px',
-      }
+      ([entry]) => entry.isIntersecting && setIsActive(true),
+      { threshold: 0, rootMargin: '0px 0px -20% 0px' }
     )
 
     observer.observe(sectionRef.current)
@@ -41,45 +35,38 @@ export default function Projects() {
       id="projects"
       ref={sectionRef}
       className={`
-        py-24 px-6 bg-gray-50
+        py-20 md:py-24 px-4 sm:px-6 bg-gray-50
         transition-[opacity,transform]
         duration-[900ms]
         ease-[cubic-bezier(.22,1,.36,1)]
-        ${
-          isActive
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 translate-y-16'
-        }
+        ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
       `}
     >
       <div className="container mx-auto max-w-6xl">
         <h2
           className={`
-            text-3xl font-bold text-center mb-12 text-slate-900
+            text-2xl sm:text-3xl font-bold text-center mb-10 md:mb-12 text-slate-900
             transition-all duration-700
             ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
           `}
         >
           {t('projects.title')}
         </h2>
-        <div className="grid md:grid-cols-2 gap-8">
+
+        <div className="grid gap-8 md:grid-cols-2">
           {projects.map((project, index) => (
             <div
               key={project.id}
               className={`
-                bg-white rounded-xl border border-slate-200
+                bg-white rounded-2xl border border-slate-200
                 overflow-hidden
                 transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]
                 hover:shadow-xl hover:-translate-y-1
-                ${
-                  isActive
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-6'
-                }
+                ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
               `}
               style={{ transitionDelay: `${index * 120}ms` }}
             >
-              <div className="relative h-60">
+              <div className="relative h-52 sm:h-60">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -87,7 +74,7 @@ export default function Projects() {
                   className="object-cover"
                 />
 
-                <div className="absolute top-4 left-4 flex gap-2">
+                <div className="absolute top-3 left-3 flex flex-wrap gap-2">
                   {project.category.map(cat => (
                     <span
                       key={cat}
@@ -98,8 +85,9 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
+
+              <div className="p-5 sm:p-6">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">
                   {project.title}
                 </h3>
 
@@ -108,7 +96,7 @@ export default function Projects() {
                 </p>
 
                 <div className="mb-4">
-                  <h4 className="font-semibold mb-2 text-sm">
+                  <h4 className="font-semibold mb-2 text-xs sm:text-sm">
                     {t('projects.technologies')}:
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -134,7 +122,7 @@ export default function Projects() {
 
                 {project.results && (
                   <div className="pt-4 mt-4 border-t">
-                    <h4 className="font-semibold text-green-600 mb-2 text-sm">
+                    <h4 className="font-semibold text-green-600 mb-2 text-xs sm:text-sm">
                       {t('projects.results')}:
                     </h4>
                     <ul className="space-y-1 text-sm">
