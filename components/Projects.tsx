@@ -1,152 +1,139 @@
 'use client'
 
 import Image from 'next/image'
-import { projects } from '@/data/projects'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useRef, useState } from 'react'
 
-export default function Projects() {
+export default function Hero() {
   const { t } = useTranslation()
+
   const sectionRef = useRef<HTMLElement>(null)
+  const imageRef = useRef<HTMLDivElement>(null)
+  const textRef = useRef<HTMLDivElement>(null)
 
-  const [mounted, setMounted] = useState(false)
-  const [isActive, setIsActive] = useState(false)
+  const [isInView, setIsInView] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    const handleScroll = () => {
+      if (!sectionRef.current || !imageRef.current || !textRef.current) return
+
+      const scrollY = window.scrollY
+      const sectionTop = sectionRef.current.offsetTop
+      const sectionHeight = sectionRef.current.offsetHeight
+
+      const progress = Math.min(
+        1,
+        Math.max(0, (scrollY - sectionTop) / sectionHeight)
+      )
+
+      imageRef.current.style.transform = `
+        translateY(${progress * 50}px)
+        scale(${1 + progress * 0.1})
+      `
+
+      textRef.current.style.opacity = `${1 - progress * 1.2}`
+      textRef.current.style.transform = `translateY(${progress * 30}px)`
+
+      sectionRef.current.style.background = `
+        linear-gradient(135deg,
+          rgba(59,130,246,${0.05 + progress * 0.1}) 0%,
+          rgba(229,231,235,${0.2 + progress * 0.2}) 100%
+        )
+      `
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
   useEffect(() => {
-    if (!mounted || !sectionRef.current) return
+    if (!sectionRef.current) return
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsActive(true)
-        }
-      },
-      {
-        threshold: 0,
-        rootMargin: '0px 0px -20% 0px',
-      }
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.3 }
     )
 
     observer.observe(sectionRef.current)
     return () => observer.disconnect()
-  }, [mounted])
+  }, [])
 
-  if (!mounted) return null
+  const scrollToProjects = () => {
+    document
+      .getElementById('projects')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   return (
     <section
-      id="projects"
       ref={sectionRef}
-      className={`
-        py-24 px-6 bg-gray-50
-        transition-[opacity,transform]
-        duration-[900ms]
-        ease-[cubic-bezier(.22,1,.36,1)]
-        ${
-          isActive
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 translate-y-16'
-        }
-      `}
+      className="min-h-[90vh] py-20 px-6 flex items-center transition-all"
     >
-      <div className="container mx-auto max-w-6xl">
-        <h2
-          className={`
-            text-3xl font-bold text-center mb-12 text-slate-900
-            transition-all duration-700
-            ${isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
-          `}
-        >
-          {t('projects.title')}
-        </h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className={`
-                bg-white rounded-xl border border-slate-200
-                overflow-hidden
-                transition-all duration-700 ease-[cubic-bezier(.22,1,.36,1)]
-                hover:shadow-xl hover:-translate-y-1
-                ${
-                  isActive
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-6'
-                }
-              `}
-              style={{ transitionDelay: `${index * 120}ms` }}
-            >
-              <div className="relative h-60">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                />
+      <div className="container mx-auto">
+        <div className="flex flex-col md:flex-row items-center gap-12">
 
-                <div className="absolute top-4 left-4 flex gap-2">
-                  {project.category.map(cat => (
-                    <span
-                      key={cat}
-                      className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs"
-                    >
-                      {cat}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">
-                  {project.title}
-                </h3>
+          <div ref={textRef} className="md:w-1/2">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+              {t('hero.title')}
+            </h1>
 
-                <p className="text-slate-600 mb-4 text-sm leading-relaxed">
-                  {project.description}
-                </p>
+            <p className="text-lg text-slate-600 mb-8">
+              {t('hero.description')}
+            </p>
 
-                <div className="mb-4">
-                  <h4 className="font-semibold mb-2 text-sm">
-                    {t('projects.technologies')}:
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map(tech => (
-                      <span
-                        key={tech}
-                        className="bg-slate-100 text-slate-700 px-3 py-1 rounded text-xs"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+            <div className="flex flex-wrap gap-4">
+              <button
+                onClick={scrollToProjects}
+                className="
+                  bg-blue-600 text-white px-6 py-3 rounded-lg
+                  transition-all duration-300
+                  hover:bg-blue-700 hover:scale-105 hover:shadow-lg
+                "
+              >
+                {t('hero.viewProjects')}
+              </button>
 
-                <ul className="space-y-2 mb-4 text-sm">
-                  {project.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start">
-                      <span className="w-2 h-2 mt-2 bg-blue-600 rounded-full mr-3 shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                {project.results && (
-                  <div className="pt-4 mt-4 border-t">
-                    <h4 className="font-semibold text-green-600 mb-2 text-sm">
-                      {t('projects.results')}:
-                    </h4>
-                    <ul className="space-y-1 text-sm">
-                      {project.results.map((result, idx) => (
-                        <li key={idx}>{result}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+              <button
+                className="
+                  border border-blue-600 text-blue-600 px-6 py-3 rounded-lg
+                  transition-all duration-300
+                  hover:bg-blue-50 hover:scale-105
+                "
+              >
+                {t('hero.downloadCV')}
+              </button>
             </div>
-          ))}
+          </div>
+
+          <div ref={imageRef} className="md:w-1/2">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+              <Image
+                src="/avatar.jpg"
+                alt={t('hero.imageAlt')}
+                fill
+                className="
+                  rounded-full object-cover
+                  border-4 border-white
+                  shadow-2xl
+                  transition-transform duration-500
+                  hover:scale-105
+                "
+              />
+
+              {isInView && (
+                <>
+                  <div className="absolute inset-0 rounded-full border-2 border-blue-300/30 animate-ping" />
+                  <div className="absolute inset-4 rounded-full border-2 border-blue-400/20 animate-pulse" />
+                </>
+              )}
+
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-400/20 rounded-full animate-bounce hidden md:block" />
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-cyan-400/20 rounded-full animate-bounce delay-75 hidden md:block" />
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
