@@ -15,7 +15,7 @@ export const projects: Project[] = [
     title: "Thực tập chuyên môn – Công ty TNHH SPX Express",
     description: "Tham gia thực tập trong lĩnh vực logistics và vận tải, hỗ trợ hoạt động vận hành thực tế.",
     category: ["Logistics", "Vận tải", "Vận hành"],
-    image: "/SPX_express_logo.png",
+    image: "/SPX_express_logo.jpg",
     technologies: ["Hệ thống quản lý đơn hàng", "Hệ thống theo dõi vận chuyển", "Quy trình vận hành nội bộ"],
     features: [
       "Hỗ trợ theo dõi tiến độ giao nhận và cập nhật thông tin đơn hàng",
