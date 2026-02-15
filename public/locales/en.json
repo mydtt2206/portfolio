@@ -13,17 +13,17 @@
     "name": "My Dang Thi Tra"
   },
   "skills": {
-    "title": "Professional Skills",
-    "warehouse": "Planning & Supply Ordering",
-    "supplyChain": "Supply Chain Management",
-    "transport": "Multimodal Transportation",
-    "wms": "Operations Management",
-    "analysis": "Logistics Analysis",
-    "risk": "Risk Management",
-    "tag1": "E-Commerce",
-    "tag2": "Shipping Systems",
-    "tag3": "Business Analysis",
-    "tag4": "Problem Solving"
+    "title": "Skills",
+  "warehouse": "Warehouse Planning & Inventory Replenishment",
+  "supplyChain": "Customs Declaration",
+  "transport": "Multimodal Transportation",
+  "wms": "Operations Management",
+  "analysis": "Time Management",
+  "risk": "Problem Solving",
+  "tag1": "Strong Communication & Teamwork Skills",
+  "tag2": "Customer Service Experience",
+  "tag3": "Business Analysis",
+  "tag4": "Proficient in Microsoft Office"
   },
   "projects": {
     "title": "Featured Projects",
