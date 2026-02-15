@@ -9,29 +9,29 @@
     "description": "Tôi là sinh viên năm 3 với GPA 3.37, có tinh thần trách nhiệm, thích nghi tốt trong môi trường làm việc nhịp độ nhanh và luôn chủ động học hỏi. Tôi mong muốn được tham gia thực tập tại công ty để tích lũy kinh nghiệm thực tế và đóng góp giá trị cho công ty.",
     "viewProjects": "Xem dự án",
     "downloadCV": "Tải CV",
-    "imageAlt": "Chuyên gia Logistics",
+    "imageAlt": "Quản lý vận tải và kinh doanh",
     "name": "Đặng Thị Trà My"
   },
   "skills": {
-    "title": "Kỹ năng chuyên môn",
+    "title": "Kỹ năng ",
     "warehouse": "Lập kế hoạch kho & đặt hàng",
-    "supplyChain": "Quản lý chuỗi cung ứng",
+    "supplyChain": "Khai báo hải quan",
     "transport": "Vận tải đa phương thức",
-    "wms": "Quản lý vận hành(WMS)",
-    "analysis": "Phân tích logistics",
-    "risk": "Quản lý rủi ro",
-    "tag1": "Thương mại điện tử",
-    "tag2": "Hệ thống vận chuyển / hệ thống giao nhận",
+    "wms": "Quản lý vận hành",
+    "analysis": "Quản lý thời gian",
+    "risk": "giải quyết vấn đề",
+    "tag1": "Giao tiếp & làm việc nhóm tốt",
+    "tag2": "Kinh nghiệm chăm sóc khách hàng",
     "tag3": "Phân tích kinh doanh",
-    "tag4": "Giải quyết vấn đề"
+    "tag4": "Sử dụng Microsoft Office"
   },
   "projects": {
-    "title": "Dự án tiêu biểu",
+    "title": "Dự án thực tế",
     "technologies": "Công nghệ sử dụng",
     "results": "Kết quả đạt được"
   },
   "footer": {
-    "subtitle": "Chuyên gia tư vấn và phát triển giải pháp logistics",
+    "subtitle": "Quản lý vận tải và kinh doanh",
     "contact": "Liên hệ"
   }
 }
