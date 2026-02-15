@@ -29,7 +29,7 @@ export const projects: Project[] = [
     title: "Báo cáo phân tích doanh nghiệp – Công ty Cổ phần Transimex",
     description: "Thực hiện phân tích chuỗi cung ứng và đánh giá hiệu quả hoạt động doanh nghiệp.",
     category: ["Chuỗi cung ứng", "Phân tích kinh doanh", "Tối ưu hóa"],
-    image: "/Transimex",
+    image: "/Transimex.jpg",
     technologies: ["Phân tích chuỗi cung ứng", "Tối ưu chi phí", "Cải tiến quy trình"],
     features: [
       "Đánh giá chuỗi cung ứng và đề xuất chiến lược tối ưu chi phí",
