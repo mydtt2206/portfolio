@@ -12,30 +12,29 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Tối ưu hoá chuỗi cung ứng B2B",
-    description: "Tối ưu hoá logistics cho doanh nghiệp sản xuất với hệ thống kho vận thông minh",
-    category: ["Supply Chain", "Warehouse", "Optimization"],
-    image: "/cang_cat_lai.jpg",
-    technologies: ["WMS", "TMS", "ERP Integration"],
+    title: "Thực tập chuyên môn – Công ty TNHH SPX Express",
+    description: "Tham gia thực tập trong lĩnh vực logistics và vận tải, hỗ trợ hoạt động vận hành thực tế.",
+    category: ["Logistics", "Vận tải", "Vận hành"],
+    image: "/SPX_express_logo.png",
+    technologies: ["Hệ thống quản lý đơn hàng", "Hệ thống theo dõi vận chuyển", "Quy trình vận hành nội bộ"],
     features: [
-      "Giảm 30% thời gian xử lý đơn hàng",
-      "Tối ưu không gian kho bãi",
-      "Tích hợp hệ thống theo dõi thời gian thực"
-    ],
-    results: ["Tiết kiệm 25% chi phí logistics", "Tăng 40% hiệu suất kho"]
+      "Hỗ trợ theo dõi tiến độ giao nhận và cập nhật thông tin đơn hàng",
+      "Hỗ trợ xử lý các vấn đề phát sinh trong quá trình vận chuyển",
+      "Phối hợp với các bộ phận để đảm bảo hoạt động vận hành diễn ra đúng kế hoạch",
+      "Tìm hiểu và học hỏi quy trình vận hành thực tế trong lĩnh vực logistics và vận tải"
+    ]
   },
   {
     id: 2,
-    title: "Hệ thống quản lý vận tải đa phương thức",
-    description: "Phát triển nền tảng quản lý vận tải đường bộ, đường biển và đường hàng không",
-    category: ["Transportation", "Multimodal", "Tracking"],
-    image: "/metro.jpg",
-    technologies: ["GPS Tracking", "API Integration", "Cloud Computing"],
+    title: "Báo cáo phân tích doanh nghiệp – Công ty Cổ phần Transimex",
+    description: "Thực hiện phân tích chuỗi cung ứng và đánh giá hiệu quả hoạt động doanh nghiệp.",
+    category: ["Chuỗi cung ứng", "Phân tích kinh doanh", "Tối ưu hóa"],
+    image: "/Transimex",
+    technologies: ["Phân tích chuỗi cung ứng", "Tối ưu chi phí", "Cải tiến quy trình"],
     features: [
-      "Theo dõi vị trí container thời gian thực",
-      "Tự động hoá document processing",
-      "Báo cáo analytics tự động"
-    ],
-    results: ["Giảm 35% thời gian vận chuyển", "Tăng độ chính xác lên 99%"]
+      "Đánh giá chuỗi cung ứng và đề xuất chiến lược tối ưu chi phí",
+      "Chuẩn bị báo cáo hỗ trợ quản lý nhằm nâng cao hiệu quả hoạt động",
+      "Tối ưu quy trình vận hành để tiết kiệm thời gian và chi phí"
+    ]
   }
 ]
